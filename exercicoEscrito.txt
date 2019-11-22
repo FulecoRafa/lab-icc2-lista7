@@ -1,0 +1,42 @@
+1)
+
+[Vetor Original] -> 1,1,2,1,9,0,7,1} size = 8
+[Vetor 1º ciclo] -> {1,0,2,1,9,1,7,1} aux = 4
+[Vetor 2º ciclo] -> {1,0,2,1,7,1,9,1} aux = 2
+[Vetor 3º ciclo] -> {0,1,1,1,1,2,7,9} aux = 1
+
+
+2)
+
+Seja o tempo para comparação 'Tc', o tempo da atribuição 'Ta' e 'n' o número de 
+elementos do vetor.
+
+Para achar X(n) equação de recursão em função de X(n-1), Tc, Ta e n, analisamos o 
+código.
+
+Para cada gap, são feitas n-'tamanho do gap' comparações. E quantos gaps vão ser 
+analizados? log2(n) gaps, pois cada novo gap é metade do anterior. Fora isso, há 
+trocas subsequentes, que são (2^aux)-aux para aux < n/2. Aux é n/2^i. Portanto, o 
+número de comparações é, depois de simplificar a equação:
+
+somatório(log2(n)*    n*((1-1/2^i)  +  ((2^(n/2^i))-n/(2^i))) com i de 0 até log2(n)-1
+       Quantos aux   Operaçoões/aux    Operações subsequentes
+
+Sendo que, no somatório, X(n-1) já cobre todos os valores até log2(n)-2, podemos 
+reescrever como:
+
+X(n) = n*log2(n)*((1-2/n))+(n*log2(n)-4))*X(n-1)
+
+X(n) = (n²*log2²(n)-4*n*log2(n)+n*log2(n)-2*log2(n))*X(n-1)
+
+Para responder 3 e 4, considerei o seguinte:
+
+Como n é um valor muito grande, o termo predominante de X(n) encontrado em 2 é:
+
+X(n) = (n*log2(n))²*X(n-1) (I)
+
+3)Considerando a expressão (I), temos O(n²*log2(n)), pois n² é maior que log2²(n).
+
+4)Considerando a expressão (I), temos 'Omega'(n*log2(n))
+
+

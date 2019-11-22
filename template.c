@@ -5,9 +5,9 @@ void algoritmo(int *v , int n){
         for(j = aux; j < n; ++j){ 
             int k = *(v+j);
             int b = j;
-            while ((b >= aux) && (v[b−aux] > k)){ 
-                v[b] = v[b−aux];
-                b −= aux;
+            while ((b >= aux) && (v[b-aux] > k)){ 
+                v[b] = v[b-aux];
+                b -= aux;
             }
             v[b] = k;
         }
